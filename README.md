@@ -1,5 +1,4 @@
 # fivem-licenseplate-above-the-car
-Fivem Land Discord = https://discord.gg/ekujhmwKxN
 My Discord = https://discord.gg/P6jgaKaRqF
 
 ![alt text](https://cdn.discordapp.com/attachments/791343825498538010/949352709776109679/unknown.png)
