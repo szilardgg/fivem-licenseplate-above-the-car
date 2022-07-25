@@ -17,17 +17,23 @@ end
 
 function drawPlates()
     while show do 
+        local playerPed <const> = PlayerPedId()
+        local playerCoords <const> = GetEntityCoords(playerPed)
+        local playerVehicle <const> = GetVehiclePedIsIn(playerPed)
+        
+        local showingPlates = false
         local vehicles <const> = GetGamePool("CVehicle")
-        local playerCoords <const> = GetEntityCoords(PlayerPedId())
-
         for i=1, #vehicles, 1 do
             local vehCoords <const> = GetEntityCoords(vehicles[i])
             
-            if #(playerCoords - vehCoords) < Config.distance and not IsPedInVehicle(PlayerPedId(),vehicles[i],true) then
+            if #(playerCoords - vehCoords) < Config.distance and playerVehicle ~= vehicles[i] then
                 local plate <const> = GetVehicleNumberPlateText(vehicles[i])
                 DrawText3D(vehCoords[1], vehCoords[2], vehCoords[3]+Config.height, Config.country .. plate)
+                showingPlates = true
             end
         end
+
+        Wait(showingPlates and 0 or 1000)
     end
 end
 CreateThread(drawPlates)
